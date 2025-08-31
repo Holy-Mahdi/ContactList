@@ -61,7 +61,12 @@ def main():
         print("4. show all contacts")
         print("5. exit")
 
-        choose = int(input("your choose : "))
+        try : 
+            choose = int(input("your choose : "))
+        except:
+            print("Enter number of each option")
+            continue
+            
 
         if choose   == 1:
             add_contact(contacts)
