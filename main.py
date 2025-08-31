@@ -49,5 +49,37 @@ def show_contacts(contacts):
         print(f"{name} : {contacts[name]}")
 
 
-    
+def main():
+
+    contacts = load_contacts()
+
+    while True :
+        print("\n---  contact list ---")
+        print("1. add contact")
+        print("2. delete contact")
+        print("3. search contact")
+        print("4. show all contacts")
+        print("5. exit")
+
+        choose = int(input("your choose : "))
+
+        if choose   == 1:
+            add_contact(contacts)
+        elif choose == 2:
+            delete_contact(contacts)
+        elif choose == 3:
+            search_contact(contacts)
+        elif choose == 4:
+            show_contacts(contacts)
+        elif choose == 5 :
+            save_contacts(contacts)
+            print("exited")
+            break
+        else : 
+            print("Enter valid option")
+
+
+if __name__ == "__main__":
+    main()
+
 
