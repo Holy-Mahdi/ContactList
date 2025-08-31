@@ -39,3 +39,15 @@ def search_contact(contacts):
     else :
         print(f"{name} isn't found")
 
+
+def show_contacts(contacts):
+    if not contacts:
+        print("there is no contacts")
+        return
+    print("Contacts : ")
+    for name in contacts:
+        print(f"{name} : {contacts[name]}")
+
+
+    
+
