@@ -31,3 +31,11 @@ def delete_contact(Contacts):
         print(f"Contact {name} is deleted")
     else:
         print(f"Contact {name} isn't found")
+
+def search_contact(contacts):
+    name = str(input("contact name : "))
+    if name in contacts:
+        print(f"{name} : {contacts[name]}")
+    else :
+        print(f"{name} isn't found")
+
