@@ -22,3 +22,12 @@ def add_contact(contacts):
     phone = str(input("contact number : "))
     contacts[name] = phone
     print("Contact added.")
+
+
+def delete_contact(Contacts):
+    name = str(input("contact name to delete : "))
+    if name in Contacts:
+        del Contacts[name]
+        print(f"Contact {name} is deleted")
+    else:
+        print(f"Contact {name} isn't found")
