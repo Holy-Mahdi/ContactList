@@ -3,8 +3,8 @@ import os
 
 FILE_NAME = "contacts.json"
 
-def back_menu(input):
-    if input == "menu" :
+def back_menu(user_input):
+    if user_input == "menu" :
         clear_screen()
         return 1
 
