@@ -39,12 +39,15 @@ def add_contact(contacts):
     name = name.strip()
     if back_menu(name) : return
     while True : 
-        try : 
-            phone = int(input("contact number : "))
-            break
-        except:
-            print("Invalid Phone number")
+         
+        phone = input("contact number : ").strip()
+        if back_menu(phone) : return
 
+        if phone.isdigit() or (phone.startswith("+") and phone[1:].isdigit()):
+            break
+        else:
+            print("Please enter valid phone number")
+        
         
     contacts[name] = phone
    
