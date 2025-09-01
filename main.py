@@ -32,6 +32,7 @@ def add_contact(contacts):
     contacts[name] = phone
     clear_screen()
     print(f"Contact '{name}:{phone}' added.")
+    save_contacts(contacts)
 
 
 def delete_contact(Contacts):
@@ -44,6 +45,7 @@ def delete_contact(Contacts):
     else:
         print(f"Contact {name} isn't found")
         delete_contact(Contacts)
+    save_contacts(Contacts)
 
 def search_contact(contacts):
     name = str(input("contact name : "))
@@ -55,6 +57,7 @@ def search_contact(contacts):
     else :
         print(f"{name} isn't found")
         search_contact(contacts)
+
 
 
 def show_contacts(contacts):
