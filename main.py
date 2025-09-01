@@ -3,6 +3,9 @@ import os
 
 FILE_NAME = "contacts.json"
 
+def clear_screen():
+    os.system("cls" if os.name =="nt" else 'clear')
+
 def load_contacts():
     if os.path.exists(FILE_NAME):
         with open(FILE_NAME,"r") as f:
@@ -21,11 +24,13 @@ def add_contact(contacts):
     name = str(input("contact name : "))
     phone = str(input("contact number : "))
     contacts[name] = phone
-    print("Contact added.")
+    clear_screen()
+    print(f"Contact added.")
 
 
 def delete_contact(Contacts):
     name = str(input("contact name to delete : "))
+    clear_screen()
     if name in Contacts:
         del Contacts[name]
         print(f"Contact {name} is deleted")
@@ -34,6 +39,7 @@ def delete_contact(Contacts):
 
 def search_contact(contacts):
     name = str(input("contact name : "))
+    clear_screen()
     if name in contacts:
         print(f"{name} : {contacts[name]}")
     else :
@@ -41,6 +47,7 @@ def search_contact(contacts):
 
 
 def show_contacts(contacts):
+    clear_screen()
     if not contacts:
         print("there is no contacts")
         return
@@ -50,10 +57,11 @@ def show_contacts(contacts):
 
 
 def main():
-
+    clear_screen()
     contacts = load_contacts()
 
     while True :
+        
         print("\n---  contact list ---")
         print("1. add contact")
         print("2. delete contact")
