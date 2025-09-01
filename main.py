@@ -6,7 +6,7 @@ FILE_NAME = "contacts.json"
 def back_menu(user_input):
     if user_input == "menu" :
         clear_screen()
-        return 1
+        return True
 
 def clear_screen():
     os.system("cls" if os.name =="nt" else 'clear')
@@ -26,7 +26,7 @@ def save_contacts(contacts):
 
 def add_contact(contacts):
     name = str(input("contact name : "))
-    if back_menu(name) == 1 : return
+    if back_menu(name) == True : return
     phone = str(input("contact number : "))
     contacts[name] = phone
     clear_screen()
@@ -36,7 +36,7 @@ def add_contact(contacts):
 
 def delete_contact(contacts):
     name = str(input("contact name to delete : "))
-    if back_menu(name) == 1 : return
+    if back_menu(name) == True : return
     if name in contacts:
         del contacts[name]
         clear_screen()
@@ -48,7 +48,7 @@ def delete_contact(contacts):
 
 def search_contact(contacts):
     name = str(input("contact name : "))
-    if back_menu(name) == 1 : return
+    if back_menu(name) == True : return
     
     if name in contacts:
         clear_screen()
