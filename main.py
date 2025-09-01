@@ -3,14 +3,24 @@ import os
 
 FILE_NAME = "contacts.json"
 
-def back_menu(user_input):
-    if user_input == "menu" :
-        clear_screen()
-        return True
+
+
+def notify(message):
+    clear_screen()
+    print(message)
+
+
+
 
 def clear_screen():
     os.system("cls" if os.name =="nt" else 'clear')
 
+
+def back_menu(user_input):
+    if user_input == "menu" :
+        clear_screen()
+        return True
+    
 def load_contacts():
     if os.path.exists(FILE_NAME):
         with open(FILE_NAME,"r") as f:
@@ -29,8 +39,8 @@ def add_contact(contacts):
     if back_menu(name) : return
     phone = str(input("contact number : "))
     contacts[name] = phone
-    clear_screen()
-    print(f"Contact '{name}:{phone}' added.")
+   
+    notify(f"Contact '{name}:{phone}' added.")
     save_contacts(contacts)
 
 
@@ -40,8 +50,8 @@ def delete_contact(contacts):
         if back_menu(name) : return
         if name in contacts:
             del contacts[name]
-            clear_screen()
-            print(f"Contact {name} is deleted")
+            
+            notify(f"Contact {name} is deleted")
             break
         else:
             print(f"Contact {name} isn't found")
@@ -53,8 +63,8 @@ def search_contact(contacts):
         if back_menu(name) : return
         
         if name in contacts:
-            clear_screen()
-            print(f"{name} : {contacts[name]}")
+            
+            notify(f"{name} : {contacts[name]}")
         else :
             print(f"{name} isn't found")
             search_contact(contacts)
