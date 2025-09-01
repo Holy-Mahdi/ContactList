@@ -35,17 +35,17 @@ def add_contact(contacts):
     save_contacts(contacts)
 
 
-def delete_contact(Contacts):
+def delete_contact(contacts):
     name = str(input("contact name to delete : "))
     if back_menu(name) == 1 : return
-    if name in Contacts:
-        del Contacts[name]
+    if name in contacts:
+        del contacts[name]
         clear_screen()
         print(f"Contact {name} is deleted")
     else:
         print(f"Contact {name} isn't found")
-        delete_contact(Contacts)
-    save_contacts(Contacts)
+        delete_contact(contacts)
+    save_contacts(contacts)
 
 def search_contact(contacts):
     name = str(input("contact name : "))
