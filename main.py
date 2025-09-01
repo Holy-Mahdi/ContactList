@@ -7,9 +7,16 @@ init(autoreset=True)
 FILE_NAME = "contacts.json"
 
 
-def notify(message):
+def notify(message, type="info"):
     clear_screen()
-    print(message)
+    if type == "success":
+        print(Fore.GREEN + message)
+    elif type == "error":
+        print(Fore.RED + message)
+    elif type == "warning":
+        print(Fore.YELLOW + message)
+    else:
+        print(message)
 
 
 def clear_screen():
@@ -47,11 +54,11 @@ def add_contact(contacts):
         if phone.isdigit() or (phone.startswith("+") and phone[1:].isdigit()):
             break
         else:
-            print("Please enter valid phone number")
+            notify("Please enter valid phone number", type="error")
 
     contacts[name] = phone
 
-    notify(f"Contact '{name}:{phone}' added.")
+    notify(f"Contact '{name}:{phone}' added.", type="success")
     save_contacts(contacts)
 
 
