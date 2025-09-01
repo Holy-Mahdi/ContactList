@@ -87,7 +87,7 @@ def main():
         try : 
             choose = int(input("your choose : "))
         except:
-            
+            clear_screen()
             print("Enter number of each option")
             continue
             
