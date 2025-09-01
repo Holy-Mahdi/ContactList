@@ -3,6 +3,11 @@ import os
 
 FILE_NAME = "contacts.json"
 
+def back_menu(input):
+    if input == "menu" :
+        clear_screen()
+        return 1
+
 def clear_screen():
     os.system("cls" if os.name =="nt" else 'clear')
 
@@ -22,6 +27,7 @@ def save_contacts(contacts):
 
 def add_contact(contacts):
     name = str(input("contact name : "))
+    if back_menu(name) == 1 : return
     phone = str(input("contact number : "))
     contacts[name] = phone
     clear_screen()
@@ -30,6 +36,7 @@ def add_contact(contacts):
 
 def delete_contact(Contacts):
     name = str(input("contact name to delete : "))
+    if back_menu(name) == 1 : return
     if name in Contacts:
         del Contacts[name]
         clear_screen()
@@ -40,6 +47,7 @@ def delete_contact(Contacts):
 
 def search_contact(contacts):
     name = str(input("contact name : "))
+    if back_menu(name) == 1 : return
     
     if name in contacts:
         clear_screen()
@@ -71,10 +79,12 @@ def main():
         print("3. search contact")
         print("4. show all contacts")
         print("5. exit")
+        print("-- for back to menu enter menu ---")
 
         try : 
             choose = int(input("your choose : "))
         except:
+            
             print("Enter number of each option")
             continue
             
@@ -92,6 +102,7 @@ def main():
             print("exited")
             break
         else : 
+            clear_screen()
             print("Enter valid option")
 
 
