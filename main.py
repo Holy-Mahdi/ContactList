@@ -1,8 +1,10 @@
 import json
-import os 
+import os
+from colorama import init, Fore
+
+init(autoreset=True)
 
 FILE_NAME = "contacts.json"
-
 
 
 def notify(message):
@@ -10,74 +12,75 @@ def notify(message):
     print(message)
 
 
-
-
 def clear_screen():
-    os.system("cls" if os.name =="nt" else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
 
 
 def back_menu(user_input):
     return user_input.lower() == "menu"
-    
+
+
 def load_contacts():
     if os.path.exists(FILE_NAME):
-        with open(FILE_NAME,"r") as f:
+        with open(FILE_NAME, "r") as f:
             return json.load(f)
-    
+
     return {}
 
 
 def save_contacts(contacts):
-    with open(FILE_NAME,"w") as f:
-        json.dump(contacts,f,indent=4)
+    with open(FILE_NAME, "w") as f:
+        json.dump(contacts, f, indent=4)
 
 
 def add_contact(contacts):
     name = str(input("contact name : "))
     name = name.strip()
-    if back_menu(name) : return
-    while True : 
-         
+    if back_menu(name):
+        return
+    while True:
+
         phone = input("contact number : ").strip()
-        if back_menu(phone) : return
+        if back_menu(phone):
+            return
 
         if phone.isdigit() or (phone.startswith("+") and phone[1:].isdigit()):
             break
         else:
             print("Please enter valid phone number")
-        
-        
+
     contacts[name] = phone
-   
+
     notify(f"Contact '{name}:{phone}' added.")
     save_contacts(contacts)
 
 
 def delete_contact(contacts):
-    while True: 
+    while True:
         name = str(input("contact name to delete : "))
-        if back_menu(name) : return
+        if back_menu(name):
+            return
         if name in contacts:
             del contacts[name]
-            
+
             notify(f"Contact {name} is deleted")
             break
         else:
             print(f"Contact {name} isn't found")
     save_contacts(contacts)
 
-def search_contact(contacts):
-    while True: 
-        name = str(input("contact name : "))
-        if back_menu(name) : return
-        
-        if name in contacts:
-            
-            notify(f"{name} : {contacts[name]}")
-        else :
-            print(f"{name} isn't found")
-            
 
+def search_contact(contacts):
+    while True:
+        name = str(input("contact name : "))
+        if back_menu(name):
+            return
+
+        if name in contacts:
+
+            notify(f"{name} : {contacts[name]}")
+        else:
+            print(f"{name} isn't found")
 
 
 def show_contacts(contacts):
@@ -94,8 +97,8 @@ def main():
     clear_screen()
     contacts = load_contacts()
 
-    while True :
-        
+    while True:
+
         print("\n---  contact list ---")
         print("1. add contact")
         print("2. delete contact")
@@ -104,15 +107,14 @@ def main():
         print("5. exit")
         print("-- for back to menu enter menu ---")
 
-        try : 
+        try:
             choice = int(input("your choice : "))
-        except:
+        except Exception:
             clear_screen()
             print("Enter number of each option")
             continue
-            
 
-        if choice   == 1:
+        if choice == 1:
             add_contact(contacts)
         elif choice == 2:
             delete_contact(contacts)
@@ -120,16 +122,14 @@ def main():
             search_contact(contacts)
         elif choice == 4:
             show_contacts(contacts)
-        elif choice == 5 :
+        elif choice == 5:
             save_contacts(contacts)
             print("exited")
             break
-        else : 
+        else:
             clear_screen()
             print("Enter valid option")
 
 
 if __name__ == "__main__":
     main()
-
-
