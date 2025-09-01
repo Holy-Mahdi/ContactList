@@ -36,8 +36,16 @@ def save_contacts(contacts):
 
 def add_contact(contacts):
     name = str(input("contact name : "))
+    name = name.strip()
     if back_menu(name) : return
-    phone = str(input("contact number : "))
+    while True : 
+        try : 
+            phone = int(input("contact number : "))
+            break
+        except:
+            print("Invalid Phone number")
+
+        
     contacts[name] = phone
    
     notify(f"Contact '{name}:{phone}' added.")
