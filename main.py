@@ -17,9 +17,7 @@ def clear_screen():
 
 
 def back_menu(user_input):
-    if user_input == "menu" :
-        clear_screen()
-        return True
+    return user_input.lower() == "menu"
     
 def load_contacts():
     if os.path.exists(FILE_NAME):
