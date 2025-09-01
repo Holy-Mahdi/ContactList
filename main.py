@@ -75,7 +75,7 @@ def search_contact(contacts):
             notify(f"{name} : {contacts[name]}")
         else :
             print(f"{name} isn't found")
-            search_contact(contacts)
+            
 
 
 
@@ -104,22 +104,22 @@ def main():
         print("-- for back to menu enter menu ---")
 
         try : 
-            choose = int(input("your choose : "))
+            choice = int(input("your choice : "))
         except:
             clear_screen()
             print("Enter number of each option")
             continue
             
 
-        if choose   == 1:
+        if choice   == 1:
             add_contact(contacts)
-        elif choose == 2:
+        elif choice == 2:
             delete_contact(contacts)
-        elif choose == 3:
+        elif choice == 3:
             search_contact(contacts)
-        elif choose == 4:
+        elif choice == 4:
             show_contacts(contacts)
-        elif choose == 5 :
+        elif choice == 5 :
             save_contacts(contacts)
             print("exited")
             break
