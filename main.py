@@ -85,7 +85,7 @@ def show_contacts(contacts):
         print("there is no contacts")
         return
     print("Contacts : \n ")
-    for name in contacts:
+    for name in sorted(contacts):
         print(f"{name} : {contacts[name]}")
 
 
