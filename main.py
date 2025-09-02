@@ -114,9 +114,11 @@ def edit_contact(contacts):
 
             new_name = input("Enter New name : ")
             contacts[new_name] = contacts.pop(contact_name)
+            save_contacts(contacts)
             break
         elif option == 2:
             contacts[contact_name] = input("Enter New Phone number : ")
+            save_contacts(contacts)
             break
 
 
