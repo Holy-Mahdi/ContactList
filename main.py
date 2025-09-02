@@ -41,6 +41,18 @@ def save_contacts(contacts):
         json.dump(contacts, f, indent=4)
 
 
+def number_validation(number):
+    number.strip()
+    if back_menu(number):
+        return
+
+    if number.isdigit() or (number.startswith("+") and number[1:].isdigit()):
+        return True
+    else:
+        notify("Please enter valid phone number", type="error")
+        return False
+
+
 def add_contact(contacts):
     name = str(input("contact name : "))
     name = name.strip()
@@ -49,13 +61,9 @@ def add_contact(contacts):
     while True:
 
         phone = input("contact number : ").strip()
-        if back_menu(phone):
-            return
 
-        if phone.isdigit() or (phone.startswith("+") and phone[1:].isdigit()):
+        if number_validation(phone):
             break
-        else:
-            notify("Please enter valid phone number", type="error")
 
     contacts[name] = phone
 
