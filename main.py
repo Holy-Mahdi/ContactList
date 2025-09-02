@@ -1,7 +1,6 @@
 import json
 import os
 from colorama import init, Fore
-from regex import W
 
 
 init(autoreset=True)
