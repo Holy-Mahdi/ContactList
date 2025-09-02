@@ -116,7 +116,7 @@ def edit_contact(contacts):
             contacts[new_name] = contacts.pop(contact_name)
             break
         elif option == 2:
-            contacts[contact_name[1]] = input("Enter New Phone number : ")
+            contacts[contact_name] = input("Enter New Phone number : ")
             break
 
 
