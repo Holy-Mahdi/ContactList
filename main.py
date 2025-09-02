@@ -1,6 +1,7 @@
 import json
 import os
 from colorama import init, Fore
+from regex import W
 
 
 init(autoreset=True)
@@ -125,7 +126,14 @@ def edit_contact(contacts):
             save_contacts(contacts)
             break
         elif option == 2:
-            contacts[contact_name] = input("Enter New Phone number : ")
+            number = input("Enter New Phone number : ")
+            while True:
+                if number_validation(number):
+                    break
+                else:
+                    number = input("Enter Valid Phone number : ")
+            contacts[contact_name] = number
+
             save_contacts(contacts)
             break
         else:
