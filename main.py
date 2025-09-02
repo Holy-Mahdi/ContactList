@@ -2,6 +2,7 @@ import json
 import os
 from colorama import init, Fore
 
+
 init(autoreset=True)
 
 FILE_NAME = "contacts.json"
@@ -86,6 +87,7 @@ def search_contact(contacts):
         if name in contacts:
 
             notify(f"{name} : {contacts[name]}")
+            return name
         else:
             print(f"{name} isn't found")
 
@@ -100,6 +102,24 @@ def show_contacts(contacts):
         print(f"{name} : {contacts[name]}")
 
 
+def edit_contact(contacts):
+
+    contact_name = search_contact(contacts)
+    if not contact_name:
+        return 0
+    while True:
+        print("Do you want change\n 1. name \n 2. number")
+        option = int(input("Option : "))
+        if option == 1:
+
+            new_name = input("Enter New name : ")
+            contacts[new_name] = contacts.pop(contact_name)
+            break
+        elif option == 2:
+            contacts[contact_name[1]] = input("Enter New Phone number : ")
+            break
+
+
 def main():
     clear_screen()
     contacts = load_contacts()
@@ -111,7 +131,8 @@ def main():
         print("2. delete contact")
         print("3. search contact")
         print("4. show all contacts")
-        print("5. exit")
+        print("5. edit contact")
+        print("6. exit")
         print("-- for back to menu enter menu ---")
 
         try:
@@ -130,6 +151,8 @@ def main():
         elif choice == 4:
             show_contacts(contacts)
         elif choice == 5:
+            edit_contact(contacts)
+        elif choice == 6:
             save_contacts(contacts)
             print("exited")
             break
