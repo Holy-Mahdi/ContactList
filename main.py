@@ -42,7 +42,7 @@ def save_contacts(contacts):
 
 
 def number_validation(number):
-    number.strip()
+    number = number.strip()
     if back_menu(number):
         return
 
