@@ -41,16 +41,14 @@ def save_contacts(contacts):
         json.dump(contacts, f, indent=4)
 
 
-def number_validation(number):
+def number_validation(number: str) -> bool:
     number = number.strip()
     if back_menu(number):
-        return
-
+        return False
     if number.isdigit() or (number.startswith("+") and number[1:].isdigit()):
         return True
-    else:
-        notify("Please enter valid phone number", type="error")
-        return False
+    notify("Please enter valid phone number", type="error")
+    return False
 
 
 def add_contact(contacts):
