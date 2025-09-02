@@ -120,6 +120,8 @@ def edit_contact(contacts):
             contacts[contact_name] = input("Enter New Phone number : ")
             save_contacts(contacts)
             break
+        else:
+            notify("Please Enter valid Option", type="error")
 
 
 def main():
