@@ -1,6 +1,7 @@
 import json
 import os
 from colorama import init, Fore
+from sympy import N
 
 
 init(autoreset=True)
@@ -155,8 +156,7 @@ def main():
         try:
             choice = int(input("your choice : "))
         except Exception:
-            clear_screen()
-            print("Enter number of each option")
+            notify("Enter number of each option")
             continue
 
         if choice == 1:
@@ -174,8 +174,8 @@ def main():
             print("exited")
             break
         else:
-            clear_screen()
-            print("Enter valid option")
+
+            notify("Enter a valid option", "error")
 
 
 if __name__ == "__main__":
