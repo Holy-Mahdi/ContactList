@@ -1,7 +1,6 @@
 import json
 import os
 from colorama import init, Fore
-from sympy import N
 
 
 init(autoreset=True)
@@ -105,7 +104,7 @@ def show_contacts(contacts):
         print("there is no contacts")
         return
     print("Contacts : \n ")
-    i = 0
+    i = 1
     for name in sorted(contacts):
         print(f"{i} - {name} : {contacts[name]}")
         i += 1
