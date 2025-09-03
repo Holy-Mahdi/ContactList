@@ -171,7 +171,7 @@ def main():
             edit_contact(contacts)
         elif choice == 6:
             save_contacts(contacts)
-            print("exited")
+            notify("exited")
             break
         else:
 
