@@ -1,7 +1,7 @@
 import json
 import os
-from colorama import init, Fore
 
+from colorama import Fore, init
 
 init(autoreset=True)
 
@@ -9,6 +9,23 @@ FILE_NAME = "contacts.json"
 
 
 def notify(message, type="info"):
+    """
+    Prints a message to the console with color coding based on the type and clears the screen first.
+
+    Args:
+        message (str): The message to be printed.
+        type (str, optional): The type of message, which determines the color:
+            - "success" -> green
+            - "error"   -> red
+            - "warning" -> yellow
+            - "info"    -> default terminal color
+            Defaults to "info".
+
+    Example:
+        notify("Operation completed successfully", type="success")
+        notify("An error occurred!", type="error")
+    """
+
     clear_screen()
     if type == "success":
         print(Fore.GREEN + message)
@@ -21,14 +38,28 @@ def notify(message, type="info"):
 
 
 def clear_screen():
+    """This function clear console"""
     os.system("cls" if os.name == "nt" else "clear")
 
 
 def back_menu(user_input):
+    """This function convert text to lower case and check it's menu or not
+
+    Args:
+        user_input (str): user text input
+
+    Returns:
+        bool : a flag for this is a menu text or not
+    """
     return user_input.lower() == "menu"
 
 
 def load_contacts():
+    """Load json file that have contacts
+
+    Returns:
+        json: return json variable
+    """
     if os.path.exists(FILE_NAME):
         with open(FILE_NAME, "r") as f:
             return json.load(f)
@@ -37,11 +68,24 @@ def load_contacts():
 
 
 def save_contacts(contacts):
+    """Save Json file
+
+    Args:
+        contacts (json): json variable
+    """
     with open(FILE_NAME, "w") as f:
         json.dump(contacts, f, indent=4)
 
 
 def number_validation(number: str) -> bool:
+    """do validation for number
+
+    Args:
+        number (str): the number that user enter
+
+    Returns:
+        bool: is FLag for this is valid or not
+    """
     number = number.strip()
     if back_menu(number):
         return False
@@ -52,6 +96,11 @@ def number_validation(number: str) -> bool:
 
 
 def add_contact(contacts):
+    """add contact function
+
+    Args:
+        contacts (json): contacts json
+    """
     name = str(input("contact name : "))
     name = name.strip()
     if back_menu(name):
@@ -70,6 +119,11 @@ def add_contact(contacts):
 
 
 def delete_contact(contacts):
+    """delete contact function
+
+    Args:
+        contacts (json): contacts json
+    """
     while True:
         name = str(input("contact name to delete : "))
         if back_menu(name):
@@ -85,6 +139,11 @@ def delete_contact(contacts):
 
 
 def search_contact(contacts):
+    """search contact function
+
+    Args:
+        contacts (json): contacts json
+    """
     while True:
         name = str(input("contact name : "))
         if back_menu(name):
@@ -99,6 +158,11 @@ def search_contact(contacts):
 
 
 def show_contacts(contacts):
+    """Show all contacts function
+
+    Args:
+        contacts (json): contacts json
+    """
     clear_screen()
     if not contacts:
         print("there is no contacts")
@@ -111,6 +175,11 @@ def show_contacts(contacts):
 
 
 def edit_contact(contacts):
+    """edit contacts function
+
+    Args:
+        contacts (json): contacts json
+    """
 
     contact_name = search_contact(contacts)
     if not contact_name:
@@ -140,6 +209,7 @@ def edit_contact(contacts):
 
 
 def main():
+    """main function that handel all function and works as a menu"""
     clear_screen()
     contacts = load_contacts()
 
