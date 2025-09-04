@@ -1,40 +1,86 @@
-# ContactList Project
+╔════════════════════════════════════════╗
+║           Contact Manager CLI          ║
+╚════════════════════════════════════════╝
 
-A simple Python project to manage contacts. This README outlines the planned versions and their features.
+A simple command-line contact manager in Python. Manage your contacts easily with add, edit, delete, search, and display functionality. Data is saved in `contacts.json` for persistence. Color-coded notifications are provided via `colorama`.
 
-## Versions
+╔════════════════════════════════════════╗
+║               Features                 ║
+╚════════════════════════════════════════╝
 
-### Version 1.0: Basic CLI Contact List
+- Add new contacts (name + phone number)
+- Edit existing contacts (name or phone number)
+- Delete contacts
+- Search contacts by name
+- Display all contacts sorted
+- Persistent storage in `contacts.json`
+- Color-coded notifications:
+  - ✅ Green → Success
+  - ❌ Red → Error
+  - ⚠️ Yellow → Warning
 
-- Add, view, and delete contacts
-- Store contacts in a local file (e.g., CSV or JSON)
-- Simple command-line interface
+╔════════════════════════════════════════╗
+║             Installation               ║
+╚════════════════════════════════════════╝
 
-### Version 2.0: Enhanced CLI
+1. Clone the repository:
 
-- Edit contact details
-- Search contacts by name or phone number
-- Input validation
+```bash
+git clone <repo-url>
+cd <repo-folder>
+```
 
-### Version 3.0: GUI Application
+2. Install dependencies:
 
-- Build a graphical user interface (Tkinter or PyQt)
-- Display contacts in a table
-- Add, edit, delete, and search contacts via GUI
+```bash
+pip install colorama
+```
 
-### Version 4.0: Persistent Storage
+╔════════════════════════════════════════╗
+║                Usage                   ║
+╚════════════════════════════════════════╝
 
-- Use SQLite database for storing contacts
-- Import/export contacts (CSV/JSON)
+Run the script:
 
-### Version 5.0: Advanced Features
+```bash
+python contact_manager.py
+```
 
-- Group contacts (e.g., Family, Friends, Work)
-- Add profile pictures
-- Backup and restore database
+Interactive menu:
 
----
+```
+--- contact list ---
+1. add contact
+2. delete contact
+3. search contact
+4. show all contacts
+5. edit contact
+6. exit
+-- for back to menu enter menu ---
+```
 
-## Getting Started
+- Type `menu` at any input to return to the main menu.
+- Phone numbers must be numeric or start with `+` for international format.
 
-Each version will have its own branch and instructions. Stay tuned for updates!
+╔════════════════════════════════════════╗
+║             File Storage               ║
+╚════════════════════════════════════════╝
+
+Contacts are saved in `contacts.json` in the same directory as the script. Automatically loaded on startup and saved on any changes.
+
+╔════════════════════════════════════════╗
+║               Example                  ║
+╚════════════════════════════════════════╝
+
+```
+your choice: 1
+contact name: John Doe
+contact number: +1234567890
+Contact 'John Doe:+1234567890' added.
+```
+
+╔════════════════════════════════════════╗
+║               License                  ║
+╚════════════════════════════════════════╝
+
+MIT License
