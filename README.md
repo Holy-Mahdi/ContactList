@@ -23,8 +23,8 @@ Contacts are stored in `contacts.json` and notifications are color-coded with `c
 ## ⚙️ Installation
 
 ```bash
-git clone <repo-url>
-cd <repo-folder>
+git clone https://github.com/Holy-Mahdi/ContactList.git
+cd ContactList
 pip install colorama
 ```
 
